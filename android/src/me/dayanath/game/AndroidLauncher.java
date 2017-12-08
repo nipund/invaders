@@ -1,5 +1,6 @@
 package me.dayanath.game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -22,6 +23,8 @@ public class AndroidLauncher extends AndroidApplication implements FinalProject.
 
 	@Override
 	public void StartActivity() {
-		Log.d("Score", "Android pulled" + fp.score);
+		Intent i = new Intent(this, GameOverActivity.class);
+		i.putExtra("score", fp.score);
+		startActivity(i);
 	}
 }

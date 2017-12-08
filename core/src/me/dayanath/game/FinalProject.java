@@ -23,7 +23,7 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 	private boolean fire;
 	private ArrayList<Missile> missiles = new ArrayList<Missile>();
 	private ArrayList<Alien> aliens = new ArrayList<Alien>();
-	private Texture missile_img;
+	private Texture missile_img, button;
 	private Texture alien_img;
 	private int frame;
 	public int score;
@@ -42,6 +42,7 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 		font2.getData().setScale(-6, -6);
 
 		img = new Texture("player.png");
+		button = new Texture("spr_missile_2.png");
 		missile_img = new Texture("missile.png");
 		alien_img = new Texture("enemy.png");
 		Gdx.app.log("startup","ok");
@@ -105,6 +106,7 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 			return;
 		}
 
+		batch.draw(button, 0, Gdx.graphics.getHeight() - 100);
 		batch.draw(img, playerX, playerY);
 
 		for(Missile missile : missiles) {
