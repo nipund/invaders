@@ -1,5 +1,6 @@
 package me.dayanath.game;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
@@ -16,7 +17,10 @@ public class AndroidLauncher extends AndroidApplication implements FinalProject.
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+		int dif = getSharedPreferences("com.example.app", Context.MODE_PRIVATE).getInt("difficulty", 1);
+		Log.d("Prefs-to-game", dif+"");
 		fp = new FinalProject();
+		fp.difficulty = dif;
 		fp.setGameOverCallback(this);
 		initialize(fp, config);
 	}

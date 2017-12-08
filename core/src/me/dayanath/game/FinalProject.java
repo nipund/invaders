@@ -29,7 +29,7 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 	public int score;
 	BitmapFont font, font2;
 	private boolean gameOver;
-	private float difficulty = 8;
+	public float difficulty = 8;
 	private GameOverCallback gameOverCallback;
 
 	@Override
@@ -63,8 +63,6 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public void render () {
 		frame++;
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		if(fire) {
 			fire = false;
@@ -97,6 +95,9 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		batch.begin();
 
 		if(gameOver) {
@@ -112,6 +113,11 @@ public class FinalProject extends ApplicationAdapter implements InputProcessor {
 		for(Missile missile : missiles) {
 			missile.draw(batch);
 			missile.y -= 10;
+		}
+
+		if(aliens.size() == 0) {
+			gameOver = true;
+			//return;
 		}
 
 		for(Alien alien : aliens) {
